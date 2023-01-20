@@ -1,0 +1,18 @@
+.col-md-12 {
+    line-height: 20px;
+}
+/** Kode CSS Bullets untuk Metode A, B, dan C**/
+ul.a {
+    list-style-position: outside;
+  }
+  ul.b {
+    list-style-position: inside;
+  }
+  ul.c {
+      list-style-type: disc;
+      list-style-position: outside;
+      padding: 5px 0 5px 10px;
+      margin-left:50px;
+      line-height:28px;
+      font-size:18px
+  }

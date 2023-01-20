@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{url_for('static',filename='style.css') }}">
+
+    <title>Sistem Klasifikasi Dengue</title>
+</head>
+
+<body>
+    <div class="container pt-5">
+
+        <div class="form-group">
+            <a href="/form_predict" class="btn btn-success">
+                <i class="fa fa-angle-double-left"></i> Kembali
+            </a>
+        </div>
+        <br>
+
+        {% if prediction_text == 'DD!' %}
+        <div class="alert alert-danger">
+            <h1>Anda teramsuk dalam kategori {{ prediction_text }} (Demam Dengue)</h1>
+            <hr class="my-1">
+            <div class="row">
+                <div class="col-6">
+                    <h class="fw-bolder">Tindakan yang bisa dilakukan : Segera istirahat selama demam.
+                        <h6/>
+                        <br>
+                        <p>Seperti :</p>
+                        <ul class="a">
+                            <li>
+                                Pengobatan demam dengue adalah simtomatif dan suportif yaitu istirahat selama demam.
+                            </li>
+                            <li>
+                                Pengobatan ditujukan untuk mencegah penderita masuk ke fase syok.
+                            </li>
+                            <li>
+                                Pertolongan pertama yang dapat dilakukan adalah memberi minum sebanyak penderita mampu, memberi obat penurun panas golongan parasetamol, kompres dengan air hangat.
+                            </li>
+                            <li>
+                                Apabila penderita tidak dapat minum atau muntah-muntah pasang infus cairan Ringer Laktat atau NaCl dan segera rujuk ke Rumah Sakit
+                            </li>
+                        </ul>     
+                </div>
+                <div class="col-6">
+                        <img class="mb-2" src="{{url_for('static',filename='img/tidur.png') }}" alt="" width="500" height="300">
+                </div>
+            </div>
+
+            </div>
+
+        {% elif prediction_text == 'DBD!' %}
+        <div class="alert alert-danger">
+            <h1>Anda termasuk dalam kategori {{ prediction_text }} (Demam Berdarah Dengue)</h1>
+            <hr class="my-1">
+        <div class="row">
+            <div class="col-6">
+                <br>
+                <h class="fw-bolder">Tindakan yang bisa dilakukan : Pengobatan demam berdarah dengue derajat I dan II bersifat suportif.
+                    <h6 />
+                    <br>
+                    <p>Seperti :</p>
+                    <ul class="a">
+                        <li>
+                            Pengobatan demam berdarah dengue derajat I dan II bersifat suportif dengan pemberian cairan (Ringer Lactat/Asetat atau NaCL) dosis rumatan (maintenance)
+                        </li>
+                        <li>
+                            simptomatis dengan analgetik antipiretik (parasetamol) disertai monitoring yang ketat tanda-tanda vital dan kemungkinan terjadinya kebocoran plasma (hemokonsentrasi).
+                        </li>
+                    </ul>
+                   
+            </div>
+            <div class="col-6">
+                <img class="mb-2" src="{{url_for('static',filename='img/periksa.png') }}" alt="" width="300" height="300">
+        </div>
+            
+        </div>
+        </div>
+
+        {% elif prediction_text == 'DSS!' %}
+        <div class="alert alert-danger">
+            <h1>Anda termasuk dalam kategori {{ prediction_text }} (Dengue Shock Syndrome)</h1>
+            <hr class="my-1">
+            <div class="row">
+                <div class="col-6">
+                    <br>
+                    <p>Seperti :</p>
+                    <h class="fw-bolder">Tindakan yang bida dilakkukan : Segera  dirawat di rumah sakit.
+                        <h6 />
+                        <br>
+                        <ul class="a">
+                            <li>
+                                Penderita dirawat di rumah sakit bila terdapat kenaikan kadar hematokrit > 20%, disertai jumlah trombosit kurang dari 100.000/mm3
+                            </li>
+                            <li>
+                                atau menunjukkan tanda-tanda perdarahan spontan selain petekia.
+                            </li>
+                        </ul>
+                      
+                </div>
+                <div class="col-6">
+                    <img class="mb-2" src="{{url_for('static',filename='img/rumahsakit.png') }}" alt="" width="300" height="300">
+            </div>
+            </div>
+        </div>
+
+        <!-- {% elif prediction_text == 'Sehat!' %}
+        <div class="alert alert-danger">
+            <h1>{{ prediction_text }}</h1>
+            <hr class="my-1">
+            <div class="col-md-6">
+                <br>
+                <h class="fw-bolder">Selamat anda dinyatakan sehat.
+                    <h6 />
+                    <br>
+                    <p>Tetap jaga kebersihan lingkungan dengan membuang air yang tergenang serta rajin menguras bak mandi agar dapat memutus perkembangbiakan nyamuk Aides Aegypti.
+                    </p>
+                    <br>
+            </div>
+        </div> -->
+        {% endif %}
+
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
